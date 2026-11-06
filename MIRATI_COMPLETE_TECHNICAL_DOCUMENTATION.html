@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مرآتي الرقمية — التوثيق التقني الكامل</title>
+<style>
+  :root { --navy:#0e2038; --teal:#0e7c74; --paper:#faf8f4; --ink:#1c2b3a; --ink2:#46586b; --line:#e5e0d6; --danger:#b3261e; --warn:#92500a; }
+  * { box-sizing:border-box; }
+  body { font-family:"Segoe UI","Noto Naskh Arabic",Tahoma,Arial,sans-serif; background:var(--paper); color:var(--ink); line-height:1.9; margin:0; }
+  header { background:var(--navy); color:#fff; padding:36px 24px; border-bottom:3px solid var(--teal); }
+  header h1 { margin:0 0 6px; font-size:1.6rem; }
+  header p { margin:0; color:#c3cfdb; }
+  main { max-width:900px; margin:0 auto; padding:24px 20px 80px; }
+  h2 { color:var(--navy); border-bottom:2px solid var(--line); padding-bottom:6px; margin-top:44px; font-size:1.25rem; }
+  h3 { color:var(--teal); margin-bottom:4px; font-size:1.05rem; }
+  table { width:100%; border-collapse:collapse; font-size:.9rem; margin:10px 0; }
+  th,td { text-align:start; padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { background:#f1ede4; color:var(--navy); }
+  code, pre { font-family:Consolas,monospace; direction:ltr; }
+  code { background:#f1ede4; padding:1px 6px; border-radius:4px; font-size:.85em; }
+  pre { background:var(--navy); color:#dce7f0; padding:14px; border-radius:8px; overflow-x:auto; font-size:.82rem; line-height:1.6; }
+  .ok { color:#216e4e; font-weight:700; }
+  .part { color:#92500a; font-weight:700; }
+  .no { color:var(--danger); font-weight:700; }
+  .tag { display:inline-block; padding:1px 10px; border-radius:99px; font-size:.78rem; font-weight:700; border:1px solid var(--line); }
+  .t-ok { background:#ecf4ee; color:#216e4e; border-color:#c4ddd0; }
+  .t-part { background:#fdf4e5; color:#92500a; border-color:#f0d9b3; }
+  .t-no { background:#fbeeed; color:#b3261e; border-color:#eec8c5; }
+  .box { border:1px solid var(--line); border-inline-start:3px solid var(--teal); background:#fff; border-radius:8px; padding:12px 16px; margin:12px 0; }
+  .warn { border-inline-start-color:var(--danger); background:#fbeeed; }
+  nav.toc { background:#fff; border:1px solid var(--line); border-radius:8px; padding:16px 24px; }
+  nav.toc a { color:var(--teal); text-decoration:none; }
+  nav.toc a:hover { text-decoration:underline; }
+  footer { text-align:center; color:var(--ink2); font-size:.85rem; padding:24px; border-top:1px solid var(--line); }
+</style>
+</head>
+<body>
+<header>
+  <h1>مرآتي الرقمية — Mirati Digital Safety</h1>
+  <p>التوثيق التقني الكامل · الإصدار 2026-11-06 · منصة عربية للسلامة الرقمية وحماية ضحايا الابتزاز الإلكتروني</p>
+</header>
+<main>
+
+<div class="box">
+  <strong>مبدأ المشروع:</strong> حماية الإنسان أولاً، الخصوصية ثانياً، الأمن التقني ثالثاً، والتعاون المؤسسي وفق القانون والاتفاق الرسمي.
+  <br><strong>حالة البناء:</strong> 103/103 اختباراً ناجحاً · typecheck نظيف · بناء إنتاج ناجح · تحقق حي في متصفح.
+</div>
+
+<h2 id="toc">الفهرس</h2>
+<nav class="toc">
+  <a href="#s1">المقدمة والرؤية</a> ·
+  <a href="#s3">النظام القديم والمطور</a> ·
+  <a href="#s6">المعمارية</a> ·
+  <a href="#s7">خريطة الصفحات</a> ·
+  <a href="#s9">قاعدة البيانات</a> ·
+  <a href="#s10">واجهات API</a> ·
+  <a href="#s12">نظام الدول العربية</a> ·
+  <a href="#s13">الإبلاغ عن الابتزاز</a> ·
+  <a href="#s14">الأدلة الرقمية</a> ·
+  <a href="#s15">الموافقات</a> ·
+  <a href="#s16">الصلاحيات</a> ·
+  <a href="#s17">التشفير</a> ·
+  <a href="#s20">التكاملات الخارجية</a> ·
+  <a href="#s21">مفاتيح API</a> ·
+  <a href="#s24">التشغيل والنشر</a> ·
+  <a href="#s26">ربط جهة حكومية</a> ·
+  <a href="#s28">إضافة دولة/جهة/درس</a> ·
+  <a href="#s33">الاختبارات</a> ·
+  <a href="#s34">المخاطر والقيود</a> ·
+  <a href="#s35">خطة التطوير</a>
+</nav>
+
+<h2 id="s1">1–2) المقدمة والرؤية</h2>
+<p>مرآتي الرقمية منصة عربية أولاً (RTL) تساعد المتضررين من الجرائم الرقمية على التصرف بهدوء: مساعد حوادث يصنّف الواقعة ويعطي خطة مرتبة، إبلاغ آمن عن الابتزاز بمتابعة مشفرة بلا حساب ولا هوية، نظام أدلة رقمية يحفظ البيانات الوصفية دون استقبال أي ملفات، أكاديمية توعية، أدوات خصوصية تعمل محلياً، وسجل لكل الدول العربية الـ22 بحالات تحقق صادقة. الرؤية: بنية تحتية عربية للمساعدة والإحالة الآمنة والتعاون المؤسسي — تبدأ بإثبات جودة الخدمة في نطاق تجريبي، ثم تتوسع باتفاقات حقيقية.</p>
+
+<h2 id="s3">3–5) النظام القديم، ما تطوّر، وما أُضيف</h2>
+<table>
+<tr><th>المكوّن</th><th>النظام القديم</th><th>الحالي</th></tr>
+<tr><td>المساعد</td><td>19 دليلاً، سؤالان دائماً</td><td><span class="tag t-ok">مطوّر</span> سؤال واحد عند الضيق، تعاطف متنوع، إشارات احتراس متناوبة، إعادة تقييم استعجال</td></tr>
+<tr><td>الإبلاغ</td><td class="no">غير موجود</td><td><span class="tag t-ok">جديد</span> معالج 3 خطوات، موافقة صريحة، رقم MR- + رمز متابعة مشفر</td></tr>
+<tr><td>إدارة القضايا</td><td class="no">غير موجود</td><td><span class="tag t-ok">جديد</span> 7 حالات، سجل أحداث، حذف ذاتي نهائي</td></tr>
+<tr><td>الأدلة الرقمية</td><td class="no">غير موجود</td><td><span class="tag t-ok">جديد</span> بيانات وصفية + SHA-256 + سجل حيازة — بلا رفع ملفات</td></tr>
+<tr><td>الدول العربية</td><td>موارد عامة</td><td><span class="tag t-ok">جديد</span> سجل 22 دولة بصفحات مستقلة وحالات تحقق (البحرين VERIFIED، البقية قيد التحقق بصدق)</td></tr>
+<tr><td>الشفافية</td><td class="no">غير موجود</td><td><span class="tag t-ok">جديد</span> /trust + صفحة عامة بإحصاءات مجمعة</td></tr>
+<tr><td>الأكاديمية والأدوات</td><td>13 درساً + 3 أدوات</td><td><span class="tag t-part">محفوظة كما هي</span> إعادة صياغة عربية كاملة، خط IBM Plex Arabic، تصميم هادئ</td></tr>
+<tr><td>بوابة الجهات الحكومية</td><td class="no">—</td><td><span class="tag t-no">تصميم فقط</span> موثقة في GOVERNMENT_PARTNERSHIP_GUIDE.md — التنفيذ عمداً بعد أول اتفاق موقّع</td></tr>
+</table>
+
+<h2 id="s6">6) المعمارية</h2>
+<pre>
+المتصفح (RTL, IBM Plex Sans Arabic محلي)
+  React 18 + Vite + React Router
+  ├─ المساعد والصفحات: /report /case /countries /trust ...
+  ├─ أدوات محلية 100%: كلمات المرور (zxcvbn)، فحص الروابط
+  └─ CSP صارم: بلا أي سكربت أو خط خارجي
+        │ fetch نفس النطاق + connect-src api.pwnedpasswords.com
+Express (TypeScript)
+  ├─ الأمن: CSP/HSTS، rate limiting، zod، سجلات بلا محتوى، redact()
+  ├─ /api/report /api/cases/* → نظام القضايا (scrypt + MR-)
+  ├─ /api/countries /api/trust
+  ├─ /api/assistant → محرك حتمي (19 Playbook) + AI اختياري للصياغة فقط
+  ├─ /api/tools/* · /api/lessons|videos|resources · /api/admin/* (CSRF)
+  └─ safeFetch: درع SSRF كامل
+node:sqlite (data/) — حالات نشر الإدارة + القضايا والأدلة
+خارجي اختياري: HIBP (مفتاح مدفوع) · Pwned Passwords (مجاني) · مزود AI
+</pre>
+<p><strong>تقنيات محفوظة:</strong> React 18، Vite، Express، TypeScript، SQLite. لا PostgreSQL/Redis حالياً — الانتقال مخطط (خطة DEPLOYMENT_GUIDE) ولا يكسر التوافق لأن كل الوصول للبيانات عبر طبقة Store واحدة.</p>
+
+<h2 id="s7">7) خريطة الصفحات</h2>
+<table>
+<tr><th>المسار</th><th>الوظيفة</th><th>الحالة</th></tr>
+<tr><td>/</td><td>الرئيسية: ماذا تفعل المنصة + مسارات فورية</td><td class="ok">تعمل</td></tr>
+<tr><td>/report</td><td>الإبلاغ الآمن — معالج 3 خطوات + موافقة</td><td class="ok">تعمل (متحقق حياً)</td></tr>
+<tr><td>/case</td><td>متابعة قضية: ولوج، أحداث، أدلة، حيازة، حذف، خروج سريع</td><td class="ok">تعمل (متحقق حياً)</td></tr>
+<tr><td>/assistant</td><td>مساعد الحوادث — تصنيف وخطة مرتبة</td><td class="ok">تعمل</td></tr>
+<tr><td>/academy + /academy/:id</td><td>13 درساً + اختبارات + قوائم تطبيق</td><td class="ok">تعمل</td></tr>
+<tr><td>/tools، /tools/password، /tools/breach، /tools/link-check</td><td>مركز الأدوات الثلاث</td><td class="ok">تعمل</td></tr>
+<tr><td>/assessment</td><td>الفحص الذاتي (10 أسئلة، خطة أسبوع)</td><td class="ok">تعمل</td></tr>
+<tr><td>/countries + /countries/:code</td><td>شبكة الدول الـ22 وصفحاتها</td><td class="ok">تعمل</td></tr>
+<tr><td>/resources</td><td>القنوات الرسمية بحالة فحص صادقة</td><td class="ok">تعمل</td></tr>
+<tr><td>/trust</td><td>مركز الشفافية (إحصاءات مجمعة)</td><td class="ok">تعمل</td></tr>
+<tr><td>/privacy</td><td>الخصوصية وحدود الخدمة</td><td class="ok">تعمل</td></tr>
+<tr><td>/admin</td><td>دخول المشرفين: نشر/إخفاء، إضافة، فحص روابط، سجل تدقيق</td><td class="ok">تعمل</td></tr>
+<tr><td>بوابة الشراكات الحكومية</td><td>استقبال الإحالات</td><td class="no">تصميم فقط — عمداً</td></tr>
+</table>
+
+<h2 id="s8">8) شرح كل وظيفة (ملخص)</h2>
+<p><strong>المساعد:</strong> تطبيع عربي (همزات/تشكيل/تاء) → مطابقة إشارات 19 دليلاً → كشف غموض بسؤال فارق → سؤال واحد للمضغوط/اثنان لغيره → استعجال رباعي بسبب معلن (خطر جسدي/قاصر = طارئة فوراً) → خطة ثلاث مراحل، كل خطوة: ماذا/لماذا/كيف تتأكد/إن لم ينجح → خطط مفقود-التحكم تتصدر. <strong>الإبلاغ الآمن:</strong> بلاغ بلا حساب/اسم، لا يُرسل لأي جهة تلقائياً. <strong>المتابعة:</strong> رقم+رمز فقط، بلا استرجاع للرمز المفقود (معلن). <strong>الأدلة:</strong> بيانات وصفية فقط + بصمة يحسبها المستخدم محلياً — منع صريح لرفع أي ملف، وخاصة المحتوى الحميم أو المتعلق بقاصرين (يوجَّه لقنوات Take It Down/CyberTipline في المساعد). <strong>الأدوات:</strong> كلمات المرور محلية، تسريبات البريد بالبصمة عبر بروكسي بلا تسجيل، الروابط تحليل بنيوي دون زيارة.</p>
+
+<h2 id="s9">9) قاعدة البيانات والجداول</h2>
+<table>
+<tr><th>الجدول</th><th>الغرض</th><th>أهم الأعمدة</th></tr>
+<tr><td>admins</td><td>حسابات المشرفين</td><td>username, password_hash (scrypt), role</td></tr>
+<tr><td>audit_log</td><td>سجل تدقيق الإدارة</td><td>admin, action, entity — بلا محتوى ضحايا</td></tr>
+<tr><td>content_status</td><td>نشر/إخفاء المحتوى</td><td>(entity_type, entity_id) PK مركب</td></tr>
+<tr><td>resource_verifications</td><td>تواريخ فحص الروابط</td><td>resource_id, verified_at, http_status</td></tr>
+<tr><td>custom_resources / custom_videos</td><td>إضافات المشرفين</td><td>status (مشرفَلة قبل النشر)</td></tr>
+<tr><td><strong>cases</strong></td><td>قضايا الحماية</td><td>case_number فريد, followup_hash (scrypt), status (7 حالات), incident_type, ongoing/minor/physical/publication, country_code, consent_json, summary اختياري — <strong>بلا أي عمود هوية أو IP</strong></td></tr>
+<tr><td><strong>case_events</strong></td><td>سجل القضية</td><td>created, triage, evidence_added…</td></tr>
+<tr><td><strong>evidence_entries</strong></td><td>أدلة بيانات وصفية</td><td>kind, platform, occurred_at, timezone, description, sha256 — بلا ملفات</td></tr>
+<tr><td><strong>evidence_log</strong></td><td>سجل الحيازة</td><td>create/view + actor + وقت</td></tr>
+</table>
+<p>الـMigrations تسلسلية CREATE IF NOT EXISTS عند الإقلاع. الانتقال المستقبلي لPostgreSQL عبر طبقة Store الواحدة دون كسر التوافق.</p>
+
+<h2 id="s10">10) جميع API</h2>
+<table>
+<tr><th>المسار</th><th>الطريقة</th><th>الحماية</th><th>الوصف</th></tr>
+<tr><td>/api/health</td><td>GET</td><td>عام</td><td>فحص الصحة</td></tr>
+<tr><td>/api/assistant</td><td>POST</td><td>20/دقيقة</td><td>المحادثة (لا يُخزن شيء)</td></tr>
+<tr><td>/api/lessons|lessons/:id|videos|resources|playbooks</td><td>GET</td><td>عام</td><td>المحتوى المنشور</td></tr>
+<tr><td>/api/tools/analyze</td><td>POST</td><td>30/دقيقة</td><td>تحليل رابط (محلي المنطق)</td></tr>
+<tr><td>/api/tools/breach</td><td>POST</td><td>3/5د</td><td>بصمة SHA-1 فقط → HIBP</td></tr>
+<tr><td>/api/report</td><td>POST</td><td>5/ساعة + موافقة إلزامية</td><td>إنشاء قضية → رقم + رمز (مرة واحدة)</td></tr>
+<tr><td>/api/cases/access</td><td>POST</td><td>20/15د + رقم+رمز</td><td>فتح القضية + تسجيل اطلاع الأدلة</td></tr>
+<tr><td>/api/cases/evidence</td><td>POST</td><td>60/ساعة + رقم+رمز</td><td>إضافة دليل بيانات وصفية (SHA-256 مُتحقق بصيغته)</td></tr>
+<tr><td>/api/cases/delete</td><td>POST</td><td>10/ساعة + رقم+رمز</td><td>حذف نهائي شامل</td></tr>
+<tr><td>/api/countries(+/:code)</td><td>GET</td><td>عام</td><td>سجل الدول</td></tr>
+<tr><td>/api/trust</td><td>GET</td><td>عام</td><td>إحصاءات مجمعة بلا شخصيات</td></tr>
+<tr><td>/api/admin/*</td><td>POST/GET</td><td>جلسة + CSRF + حد محاولات</td><td>login, overview, content-status, resources(+verify), videos, me, logout</td></tr>
+</table>
+<p>أمثلة طلب/استجابة كاملة في GUIDE.md وAPI_INTEGRATION_GUIDE.md.</p>
+
+<h2 id="s11">11) واجهات الجهات الحكومية</h2>
+<div class="box warn"><strong>غير مفعّلة عمداً.</strong> التصميم الكامل (أدوار RBAC الثمانية، OAuth2 Client Credentials، MFA، Webhooks موقعة، Idempotency، تدوير مفاتيح، مسار الشراكة العشري) في GOVERNMENT_PARTNERSHIP_GUIDE.md. التنفيذ يبدأ فقط مع أول جهة حقيقية بعد اتفاق موقّع واختبار ببيانات مصنّعة.</div>
+
+<h2 id="s12">12) نظام الدول العربية</h2>
+<p>سجل 22 دولة بخمس مناطق، لكل دولة صفحة مستقلة. حالات التحقق الخمس مطبقة؛ VERIFIED يحتاج فحصاً فعلياً بتاريخ ومصدر (الاختبار الآلي يمنع VERIFIED بلا تاريخ). البحرين مفحوصة فعلاً (2026-10-26)، والبقية PENDING_REVIEW بصدق — جدول كامل في ARAB_COUNTRIES_DIRECTORY.md. القوانين لا تُعامل كقانون واحد، ولا تُقدَّم استشارات قانونية.</p>
+
+<h2 id="s13">13) نظام الإبلاغ عن الابتزاز</h2>
+<p>معالج ثلاث خطوات: نوع الحادثة (19 + أخرى) → وضع الضحية (مستمرة/تهديد نشر/قاصر/خطر جسدي) → دولة اختيارية + ملخص حر اختياري + موافقة صريحة على التخزين. إن وُجد قاصر أو خطر جسدي: إشعار فوري يوجه للطوارئ (البلاغ الإلكتروني لا يصل للطوارئ — معلن). لا اسم ولا هاتف ولا هوية. النتيجة: رقم MR- + رمز متابعة يُعرض مرة واحدة (يُخزن scrypt — فقدانه نهائي، معلن مسبقاً). البلاغ لا يُرسل لأي جهة — الإحالة مستقبلية بموافقة منفصلة.</p>
+
+<h2 id="s14">14) نظام الأدلة الرقمية</h2>
+<p><strong>فلسفة:</strong> تنظيم التوثيق دون لمس المحتوى الحساس. المستخدم يسجل لكل دليل: النوع (رسالة/حساب/رابط/مالية/أخرى)، المنصة، وقت الحدث ومنطقته، وصفاً ≤800 حرف، وبصمة SHA-256 اختيارية <strong>يحسبها بنفسه محلياً</strong> (مثال موثق بالصفحة: certutil على ويندوز) — الملف لا يغادر جهازه أبداً. سجل حيازة يسجل الإنشاء وكل اطلاع. تقرير قابل للطباعة/PDF من المتصفح. <strong>المحظور في الكود والتصميم:</strong> رفع أي ملف (خاصة حميم/قاصرين)، معالجة أو تصنيف صور، والدعم: SHA-256 أداة تنظيم لا إثبات أصالة قاطع (معلن). حزمة التصدير المشفرة AES-256-GCM متبقية (PROJECT_PROGRESS.md).</p>
+
+<h2 id="s15">15) نظام الموافقات</h2>
+<p>موافقة تخزين إلزامية (لا تُنشأ قضية بدونها — مُختبر) بعد إشعار يفصّل ما يُخزن وما لا يُخزن. سحب الموافقة = حذف نهائي ذاتي فوري. الإحالة المستقبلية = موافقة منفصلة محددة النطاق حرفياً (لم تُبنَ بعد عمداً حتى أول جهة رسمية).</p>
+
+<h2 id="s16">16) الصلاحيات</h2>
+<p>حالياً: دورا admin/editor لمشرفي المحتوى بجلسات HMAC (8 ساعات، httpOnly، SameSite=Strict) + CSRF مزدوج. القضايا: مالكها الوحيد عبر رقم+رمز — لا يرى المشرف المحتوى عبر اللوحة (إحصاءات مجمعة فقط). الأدوار المؤسسية الثمانية (Super Admin → Content Editor) مصممة في دليل الشراكة وتُنفذ مع أول شريك.</p>
+
+<h2 id="s17">17) التشفير</h2>
+<ul>
+<li>رموز متابعة القضايا: scrypt (ملح عشوائي، مقارنة زمنية ثابتة) — النص الصريح لا يُخزن</li>
+<li>كلمات مرور المشرفين: scrypt</li>
+<li>الجلسات: HMAC-SHA256 موقعة</li>
+<li>النقل: HTTPS/HSTS إلزامي إنتاجاً — <strong>ولا نسميه تشفيراً طرفياً</strong>، ولا نعد بسرية مطلقة</li>
+<li><strong>قيد معلن:</strong> بيانات القضايا غير مشفرة-at-rest بعد — الخطة: AES-256-GCM بمفتاح منفصل عن القاعدة/KMS، بحيث لا يملك مشرف واحد فك كل شيء (موثق بجدول في PRIVACY_AND_DATA_RETENTION.md). حد الإطلاق الأدنى: تشفير قرص الاستضافة.</li>
+</ul>
+
+<h2 id="s18">18) سياسة الخصوصية</h2>
+<p>معروضة للمستخدم في /privacy وبصيغة مؤسسية في PRIVACY_AND_DATA_RETENTION.md: فصل طبقة المحادثة (لا تخزين) عن طبقة القضايا (أدنى حد + موافقة + حذف ذاتي)، ما لا نجمعه أصلاً (هوية/IP مرتبط/ملفات)، وحدود لا تُخترق (لا إرسال للنماذج، لا تدريب على المحادثات، لا تتبع ولا بيع).</p>
+
+<h2 id="s19">19) حماية المنصة</h2>
+<p>التفصيل مع أدلة الاختبارات في SECURITY_AUDIT_REPORT.md: SSRF (9 اختبارات)، IDOR على القضايا، Brute Force (رمز ~100 بت + حدود معدل)، CSRF، جلسات، SQLi (استعلامات معلمية)، XSS (CSP بلا سكربت خارجي)، Clickjacking، Prompt Injection (المجلوب بيانات بعد stripHtml، والمحرك حتمي لا ينفذ تعليمات)، تسريب أسرار (redact + بلا محتوى مستخدمين في السجلات). <strong>متبقٍ قبل الإطلاق الحقيقي:</strong> مراجعة OWASP ASVS مستقلة، WAF، مراقبة مركزية، تشفير-at-rest.</p>
+
+<h2 id="s20">20–22) التكاملات الخارجية والمفاتيح</h2>
+<table>
+<tr><th>الخدمة</th><th>الحالة</th><th>المفتاح وكيفية الحصول عليه</th><th>ماذا تصلها</th></tr>
+<tr><td>Pwned Passwords</td><td class="ok">ACTIVE (مجاني)</td><td>بلا مفتاح</td><td>بادئة 5 أحرف SHA-1 (k-anonymity) من المتصفح مباشرة</td></tr>
+<tr><td>Have I Been Pwned</td><td class="part">DISABLED بلا مفتاح</td><td>اشتراك من haveibeenpwned.com/API/Key → <code>HIBP_API_KEY</code></td><td>بصمة SHA-1 للبريد فقط عبر بروكسي بلا تسجيل</td></tr>
+<tr><td>مزود AI (OpenAI-compatible)</td><td class="part">DISABLED افتراضياً</td><td>لوحة المزود → <code>AI_BASE_URL/AI_API_KEY/AI_MODEL</code></td><td>نص رسالة المستخدم + ملخص الخطة — الصياغة فقط</td></tr>
+<tr><td>Web Risk / SMS / تخزين مشفر / OIDC / Webhooks</td><td class="no">لم تُنفَّذ</td><td>—</td><td>—</td></tr>
+</table>
+<p>جميع المفاتيح في <code>.env</code> فقط (لا Frontend ولا git). حالة كل تكامل تُعرض للمستخدم بصدق: فشل المزود = رسالة صادقة + بديل عملي، لا نتائج مصطنعة.</p>
+
+<h2 id="s23">23–25) الإعداد والتشغيل والنشر</h2>
+<pre>
+# إعداد
+cp .env.example .env
+# إلزامي للإنتاج: SESSION_SECRET + ADMIN_PASSWORD (انظر .env.example)
+# اختياري: HIBP_API_KEY / AI_*
+
+# تطوير (تحديث لحظي، منفذ 5173)
+npm install && npm run dev
+
+# إنتاج
+npm run build && NODE_ENV=production npm start   # :3000
+npm test        # 103 اختباراً
+npm run typecheck
+
+# النشر الكامل (وكيل عكسي، TLS، pm2/systemd، نسخ احتياطي، قائمة ما قبل الإطلاق)
+→ DEPLOYMENT_GUIDE.md
+</pre>
+
+<h2 id="s26">26) ربط جهة حكومية عملياً</h2>
+<p>المسار الكامل بعشر خطوات (طلب → تحقق هوية عبر قنوات الجهة المنشورة → تحقق اختصاص → مراجعة قانونية وأمنية → اتفاق موقّع → قناة تكامل → اختبار ببيانات مصنّعة → اعتماد → مراقبة → مراجعة دورية) مع مثال تدفق الإحالة وقواعد صلبة (لا وصول عبر الدول، لا بيانات خارج نص الموافقة، إلغاء فوري) — كل ذلك في GOVERNMENT_PARTNERSHIP_GUIDE.md. <strong>ابدأ بجهة تجريبية واحدة لا 22 تكاملاً دفعة واحدة.</strong></p>
+
+<h2 id="s27">27) طلب شراكة من منظمة</h2>
+<p>نفس مسار العشر خطوات — حالة الطلب مستقلة، ولا تظهر المنظمة كشريكة في أي مكان (مركز الشفافية يعرض activePartnerships=0) قبل الاعتماد الرسمي. صفحة «انضم إلى الشبكة» العامة ضمن المتبقي (PROJECT_PROGRESS.md).</p>
+
+<h2 id="s28">28) كيفية إضافة دولة جديدة</h2>
+<p>أضف كائناً في <code>shared/content/countries.ts</code> (code/nameAr/nameEn/region) — الصفحة والـAPI يُشتقان تلقائياً. املأ الجهات فقط من مصادر رسمية فحصتَها بنفسك؛ VERIFIED بلا تاريخ يفشل الاختبار الآلي. التفاصيل في ARAB_COUNTRIES_DIRECTORY.md.</p>
+
+<h2 id="s29">29) كيفية إضافة جهة أمنية</h2>
+<p>ضمن كائن الدولة: <code>cert/cybercrime/childProtection</code> بالاسم والرابط والحالة والمصدر. للتحديث الدوري: راجع الرابط، عدّل verifiedAt وlastReviewed، أو غيّر الحالة لOUTDATED/DISPUTED عند التوقف/التعارض.</p>
+
+<h2 id="s30">30) كيفية إضافة درس جديد</h2>
+<p>قالب جاهز للنسخ في GUIDE.md (القسم 4): id فريد، track، objective، sections، أمثلة آمن/مزيف، quiz بتفسيرات، checklist، minutes، order — ثم npm test && build. يظهر تلقائياً في مساره مع الاختبار.</p>
+
+<h2 id="s31">31) كيفية إضافة API جديدة</h2>
+<p>النمط المعمول به: مخطط zod للمدخلات → rateLimit → منطق عبر Store → استجابة JSON بلا بيانات شخصية زائدة → اختبار في tests/ → typecheck → build. راجع ملفات server/app.ts (نماذج: report/cases) وtests/cases.test.ts كنموذج.</p>
+
+<h2 id="s32">32) كيفية اختبار التكامل</h2>
+<pre>
+# فحص تسريبات بعد وضع المفتاح:
+curl -X POST http://localhost:3000/api/tools/breach -H "Content-Type: application/json" \
+  -d '{"emailHash":"A9993E364706816ABA3E25717850C26C9CD0D89D"}'
+# المتوقع: not_found أو found أو unavailable — لا نتائج وهمية
+
+# دورة القضايا كاملة (مغطاة بـ16 اختباراً آلياً):
+report → access(خطأ=404) → access(صحيح) → evidence → custody → delete → access=404
+</pre>
+
+<h2 id="s33">33) نتائج الاختبارات</h2>
+<table>
+<tr><th>الملف</th><th>التغطية</th><th>النتيجة</th></tr>
+<tr><td>classifier.test</td><td>19 تصنيف حادثة + تطبيع عربي + نطاق + خطر جسدي</td><td class="ok">✅</td></tr>
+<tr><td>assistant.test</td><td>تدفقات المحادثة، سؤال واحد عند الضيق، الخطوات الرباعية لكل الأدلة</td><td class="ok">✅</td></tr>
+<tr><td>linkHeuristics.test</td><td>انتحال العلامات، punycode، مختصرات، أنماط نصية</td><td class="ok">✅</td></tr>
+<tr><td>safeFetch.test</td><td>درع SSRF (9 حالات) + تنظيف HTML</td><td class="ok">✅</td></tr>
+<tr><td>api.test</td><td>كل المسارات + CSRF + جلسات + حد معدل + تأثير الإدارة</td><td class="ok">✅</td></tr>
+<tr><td>passwordAssessment.test</td><td>zxcvbn + التقييم الذاتي</td><td class="ok">✅</td></tr>
+<tr><td>cases.test</td><td>الإبلاغ/القضايا/الأدلة/الحذف/العزل + الدول + الشفافية (16)</td><td class="ok">✅</td></tr>
+</table>
+<p><strong>المجموع: 103/103 ناجحة.</strong> E2E بمرور متصفح فعلي أُجري للرحلات الحرجة (بلاغ→متابعة→أدلة). عدم وجود اختبار فاشل مُتجاوَز.</p>
+
+<h2 id="s34">34) المخاطر والقيود المتبقية (بصدق)</h2>
+<ul>
+<li><span class="tag t-no">حرج قبل الإطلاق</span> لا مراجعة أمنية/اختراق مستقلة — مطلوبة قبل استقبال قضايا حقيقية</li>
+<li><span class="tag t-part">مهم</span> بيانات القضايا غير مشفرة-at-rest (خطة AES-256-GCM + KMS موثقة)؛ حد الإطلاق الأدنى: تشفير قرص الاستضافة</li>
+<li><span class="tag t-part">مهم</span> 21 دولة جهاتها قيد التحقق — لا تُعرض كجهات مؤكدة ولا تُختلق بياناتها</li>
+<li><span class="tag t-part">مهم</span> بوابة الجهات الحكومية تصميم فقط — عمداً حتى أول اتفاق</li>
+<li><span class="tag t-no">متبقي</span> حد المعدل في الذاكرة (يلزم Redis للتوسع) · لا WAF/مراقبة مركزية · حزمة تصدير أدلة مشفرة · i18n إنجليزي · نظام إنذار مبكر · مسار حماية النساء والأطفال كصفحة مخصصة · 5 أدوات جديدة</li>
+<li><span class="tag t-ok">حدها التصميم</span> رمز المتابعة المفقود غير قابل للاسترجاع — معلن قبل الإنشاء</li>
+</ul>
+
+<h2 id="s35">35) خطة التطوير المستقبلية</h2>
+<ol>
+<li>التحقق الميداني من مصادر 21 دولة (بحث وتوثيق — يرفع قيمة الإحالة المستقبلية)</li>
+<li>مسار حماية النساء والأطفال كواجهة مخصصة (الإرشادات موجودة؛ التجميع واللغة)</li>
+<li>تشفير القضايا AES-256-GCM + إدارة مفتاح منفصلة</li>
+<li>أدوات: حاسبة بصمة محلية بالسحب والإفلات، فاحص QR، فاحص ترويسات، سمعة نطاق</li>
+<li>حزمة تصدير الأدلة المشفرة + واجهة Integrations</li>
+<li>بوابة الشراكات مع أول جهة تجريبية (OIDC، Webhooks موقعة، Idempotency)</li>
+<li>i18n + الإنذار المبكر المجمّع + خطة الاحتفاظ الآلية (12 شهراً)</li>
+<li>مراجعة OWASP ASVS مستقلة ثم إطلاق تجريبي محدود بدولة واحدة</li>
+</ol>
+
+<div class="box warn">
+<strong>الخلاصة الصادقة:</strong> المنصة تعمل فعلياً وتُختبر (103 اختباراً + تحقق حي)، ووظائف الحماية الأساسية (الإبلاغ الآمن، القضايا، الأدلة، الدول، الشفافية) مكتملة النواة. ما هو غير مكتمل موثق بالاسم أعلاه — ولا يوجد في المنصة جهة وهمية أو رابط مختلق أو وظيفة شكلية معلنة كعاملة أو مفتاح مكشوف.
+</div>
+
+</main>
+<footer>مرآتي الرقمية — وثيقة توثيق داخلية · مايو التزام المنصة: حماية الإنسان أولاً، الخصوصية ثانياً، الأمن التقني ثالثاً</footer>
+</body>
+</html>
